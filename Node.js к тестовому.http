@@ -1,0 +1,45 @@
+### vscode restclient
+@api=http://localhost:8080/api
+@jwt=paste token here
+
+### registration
+POST {{api}}/registration
+Content-Type: application/json
+
+{
+    "login":"user001",
+    "password":"1234EFA2fEF",
+    "email":"us@mail.ru",
+    "firstname":"Ivan",
+    "lastname":"Petrov"
+}
+
+### auth
+# @name auth
+POST {{api}}/auth
+Content-Type: application/json
+
+{
+    "login":"user001",
+    "password":"1234EFA2fEF"
+}
+
+### change_password
+POST {{api}}/change_password
+Content-Type: application/json
+Authorization: {{jwt}}
+
+{
+    "old_password":"1234EFA2fEF",
+    "new_password":"123"
+}
+
+### self get user info
+GET {{api}}/user?login=user002
+Content-Type: application/json
+Authorization: {{jwt}}
+
+### guest get user info
+GET {{api}}/user?login=user001
+Content-Type: application/json
+

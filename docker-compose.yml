@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  app:
+    container_name: docker-node-mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 
+    build: .
+    ports:
+     - '8080:8080'
+    links:
+       - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+     - '27017:27017'
